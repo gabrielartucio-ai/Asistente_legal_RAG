@@ -1,7 +1,8 @@
 from langchain_chroma import Chroma
+from dotenv import load_dotenv
+load_dotenv()
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chat_models import init_chat_model
-from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
@@ -26,7 +27,6 @@ def build_rag_components() -> tuple[Runnable, MultiQueryRetriever]:
 
     # modelos de lenguaje
 
-    load_dotenv()
     llm_queries = init_chat_model(
         model=QUERY_MODEL,
         model_provider=QUERY_MODEL_PROVIDER,
@@ -166,4 +166,13 @@ def get_retriever_info():
         "diversidad": MMR_DIVERSITY,
         "candidatos": MMR_FETCH_K,
         "umbral": None
+    }
+
+def get_models_info() -> dict[str, str]:
+    """Obtiene información sobre los modelos configurados"""
+    return {
+        "consulta": QUERY_MODEL,
+        "proveedor_consulta": QUERY_MODEL_PROVIDER,
+        "generacion": GENERATION_MODEL,
+        "proveedor_generacion": GENERATION_MODEL_PROVIDER,
     }

@@ -1,5 +1,5 @@
 import streamlit as st
-from rag_system import query_rag, get_retriever_info
+from rag_system import query_rag, get_retriever_info, get_models_info
 
 # Configuración de la página
 st.set_page_config(
@@ -26,9 +26,13 @@ with st.sidebar:
     st.markdown("**🔍 Retriever:**")
     st.info(f"Tipo: {retriever_info['tipo']}")
     
+    models_info = get_models_info()
     st.markdown("**🤖 Modelos:**")
-    st.info("Consultas: GPT-4o-mini\nRespuestas: GPT-4o")
-    
+    st.markdown(
+        f"**Consultas:** `{models_info['consulta']}` *({models_info['proveedor_consulta']})*  \n"
+        f"**Respuestas:** `{models_info['generacion']}` *({models_info['proveedor_generacion']})*"
+    )
+   
     st.divider()
     
     if st.button("🗑️ Limpiar Chat", type="secondary", use_container_width=True):

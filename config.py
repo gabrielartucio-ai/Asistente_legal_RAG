@@ -12,12 +12,12 @@ GENERATION_TEMPERATURE = 0.0
 
 # Configuración del vector store
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent
 CHROMA_DB_PATH = str(PROJECT_ROOT / "Chroma_db")
 
 # Configuración del retriever
 
-SEARCH_TYPE = "MMR"
+SEARCH_TYPE = "mmr"
 MMR_DIVERSITY = 0.7
 MMR_FETCH_K = 20
 SEARCH_K = 2

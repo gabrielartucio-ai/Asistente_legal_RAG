@@ -24,10 +24,10 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from pathlib import Path
 from config import *
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent
 EMBEDDING_MODEL = EMBEDDING_MODEL
 
-loader = PyPDFDirectoryLoader(PROJECT_ROOT/"Tema 3"/"Contratos")
+loader = PyPDFDirectoryLoader(PROJECT_ROOT/"Contratos")
 documents = loader.load()
 
 print(f"Se cargaron {len(documents)} documentos")
@@ -48,7 +48,7 @@ print(f"Se crearon {len(split_documents)} chunks")
 vectorstore = Chroma.from_documents(
     split_documents,
     embedding=embeddings,
-    persist_directory=str(PROJECT_ROOT/"Tema 3"/"Chroma_db")
+    persist_directory=str(PROJECT_ROOT/"Chroma_db")
 )
 
 consulta = "¿Dónde se encuentra el local del contrato en el que participa María Jiménez Campos?"
