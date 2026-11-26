@@ -1,0 +1,26 @@
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+env_casa/
+env-trabajo/
+
+# Base de datos vectorial
+Chroma_db/
+
+# Documentos legales originales
+Contratos/
+contratos.zip
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Secretos de Streamlit
+.streamlit/secrets.toml
+
